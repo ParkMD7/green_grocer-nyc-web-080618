@@ -1,10 +1,41 @@
+require 'pry'
+
+
 def consolidate_cart(cart)
-  # code here
+  cart_hash = {}
+  
+  cart.each do |item|
+    #binding.pry
+      item.each do |item_name, item_info|
+        #binding.pry
+          cart_hash[item_name] ||= item_info
+          cart_hash[item_name][:count] ||= 0
+          cart_hash[item_name][:count] += 1
+      end
+  end
+  cart_hash
 end
 
+
+
 def apply_coupons(cart, coupons)
-  # code here
+  coupons.each do |discount|
+    #binding.pry
+    coupon = discount[:item]
+    if cart[discount] && cart[discount][:count] >= coupon[:num]
+      if cart["#{coupon} W/COUPON"]
+        cart["#{coupon} W/COUPON"][:count] += 1
+      else
+        cart["#{coupon} W/COUPON"] = {:count => 1, :price => discount[:cost]}
+        cart["#{coupon} W/COUPON"][:clearance] = cart[coupon][:clearance]
+      end
+      cart[coupon][:count] -= discount[:num]
+    end
+  end
+  cart
 end
+
+
 
 def apply_clearance(cart)
   # code here
