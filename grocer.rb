@@ -55,13 +55,13 @@ def checkout(cart, coupons)
   couponed_cart = apply_coupons(consolidated_cart, coupons)
   final_cart = apply_clearance(couponed_cart)
   
-  total = 0
+  you_pay = 0
   
   final_cart.each do |item, item_info|
     binding.pry
-      total += properties[:price] * properties[:count]
+      you_pay += item_info[:price] * item_info[:count]
   end
   
-  total = total * 0.9 if total > 100
-  total
+  you_pay = you_pay * 0.9 if you_pay > 100
+  you_pay
 end
