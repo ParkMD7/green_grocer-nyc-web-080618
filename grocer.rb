@@ -58,7 +58,7 @@ def checkout(cart, coupons)
   you_pay = 0
   
   final_cart.each do |item, item_info|
-    binding.pry
+    #binding.pry
       you_pay += item_info[:price] * item_info[:count]
   end
   
