@@ -57,7 +57,7 @@ def checkout(cart, coupons)
   
   total = 0
   
-  final_cart.each do |name, properties|
+  final_cart.each do |item, item_info|
     binding.pry
       total += properties[:price] * properties[:count]
   end
