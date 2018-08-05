@@ -38,8 +38,8 @@ end
 
 
 def apply_clearance(cart)
-  cart.each do |item|
-    #binding.pry
+  cart.each do |item, b|
+    binding.pry
       if cart[item][:clearance] == true
        cart[item][:price] = (cart[item][:price]*0.80).round(3)
       end
