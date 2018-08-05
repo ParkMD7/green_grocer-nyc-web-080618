@@ -40,7 +40,7 @@ end
 def apply_clearance(cart)
   cart.each do |item|
     #binding.pry
-      item.each do |item_name, item_info|
+      if cart[fruit][:clearance] == true
         binding.pry
           if item_name[:clearance] == true
             
