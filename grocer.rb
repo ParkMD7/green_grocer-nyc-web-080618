@@ -22,7 +22,7 @@ def apply_coupons(cart, coupons)
   coupons.each do |discount|
     #binding.pry
     coupon = discount[:item]
-    if cart[discount] && cart[discount][:count] >= coupon[:num]
+    if cart[coupon] && cart[coupon][:count] >= discount[:num]
       if cart["#{coupon} W/COUPON"]
         cart["#{coupon} W/COUPON"][:count] += 1
       else
